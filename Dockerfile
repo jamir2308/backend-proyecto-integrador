@@ -8,11 +8,9 @@ WORKDIR /home/node/app
 
 # copy the package.json files from local machine to the workdir in container
 COPY --chown=node:node package*.json ./
-
-FROM node:latest
 # Copiar tsconfig.json
 COPY tsconfig.json ./
-COPY --from=builder dist/ ./dist/
+COPY --chown=node:node dist/ ./dist/
 
 # run npm install in our local machine
 RUN npm install
