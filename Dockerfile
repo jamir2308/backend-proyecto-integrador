@@ -29,4 +29,4 @@ EXPOSE 3009
 
 # the command that starts our app
 #ENTRYPOINT [ "node", "index.js", ]
-ENTRYPOINT [ "node", "src/main.js"]
+CMD ["npm", "run", "start:prod"]
