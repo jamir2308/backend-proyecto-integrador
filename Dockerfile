@@ -11,7 +11,7 @@ COPY --chown=node:node package*.json ./
 
 # Copiar tsconfig.json
 COPY tsconfig.json ./
-
+COPY --from=builder /home/node/app/dist ./dist/
 
 # run npm install in our local machine
 RUN npm install
@@ -21,8 +21,6 @@ RUN npm run build
 
 # copy the generated modules and all other files to the container
 COPY --chown=node:node . .
-
-COPY /dist ./dist/
 
 USER node
 
