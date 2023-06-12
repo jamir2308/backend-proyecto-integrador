@@ -1,11 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 import { Usuario } from '../../users/schema/users.schema';
 import { TipoDesecho } from '../../tipo-desecho/schema/tipo-desecho.schema';
 import { LugarRecoleccion } from '../../lugar-recoleccion/schema/lugar-recoleccion.schema';
 
+export type RecoleccionDocument = HydratedDocument<Recoleccion>;
+
 @Schema()
-export class Recoleccion extends Document {
+export class Recoleccion {
   @Prop({ required: true })
   fecha: Date;
 

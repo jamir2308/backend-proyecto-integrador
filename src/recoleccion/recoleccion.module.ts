@@ -2,15 +2,16 @@ import { Module } from '@nestjs/common';
 import { RecoleccionService } from './recoleccion.service';
 import { RecoleccionController } from './recoleccion.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { RecoleccionSchema } from './schema/recoleccion.schema';
-import { LugarRecoleccionModule } from 'src/lugar-recoleccion/lugar-recoleccion.module';
-import { TipoDesechoModule } from 'src/tipo-desecho/tipo-desecho.module';
-import { UsersModule } from 'src/users/users.module';
+import { Recoleccion, RecoleccionSchema } from './schema/recoleccion.schema';
+import { UsersModule } from '../users/users.module';
+import { TipoDesechoModule } from '../tipo-desecho/tipo-desecho.module';
+import { LugarRecoleccionModule } from '../lugar-recoleccion/lugar-recoleccion.module';
+
 
 @Module({
   imports: [
   MongooseModule.forFeature([
-      { name: 'Recoleccion', schema: RecoleccionSchema },
+      { name: Recoleccion.name, schema: RecoleccionSchema },
     ]),
     UsersModule,
     TipoDesechoModule,

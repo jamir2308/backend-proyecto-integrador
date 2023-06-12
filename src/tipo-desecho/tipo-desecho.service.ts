@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { TipoDesecho } from './schema/tipo-desecho.schema';
+import { TipoDesecho, TipoDesechoDocument } from './schema/tipo-desecho.schema';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class TipoDesechoService {
   constructor(
     @InjectModel(TipoDesecho.name)
-    private tipoDesechoModel: Model<TipoDesecho>,
+    private tipoDesechoModel: Model<TipoDesechoDocument>,
   ) {}
 
   async findAll(): Promise<TipoDesecho[]> {

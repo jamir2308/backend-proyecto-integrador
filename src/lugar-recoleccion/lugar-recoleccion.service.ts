@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateLugarRecoleccionDto } from './dto/create-lugar-recoleccion.dto';
-import { UpdateLugarRecoleccionDto } from './dto/update-lugar-recoleccion.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { LugarRecoleccion } from './schema/lugar-recoleccion.schema';
+import { LugarRecoleccion, LugarRecoleccionDocument } from './schema/lugar-recoleccion.schema';
 
 @Injectable()
 export class LugarRecoleccionService {
   constructor(
     @InjectModel(LugarRecoleccion.name)
-    private lugarRecoleccionModel: Model<LugarRecoleccion>,
+    private lugarRecoleccionModel: Model<LugarRecoleccionDocument>,
   ) {}
 
   async findAll(): Promise<LugarRecoleccion[]> {
