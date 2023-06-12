@@ -10,7 +10,13 @@ WORKDIR /home/node/app
 COPY --chown=node:node package*.json ./
 
 # Copiar tsconfig.json
-COPY tsconfig.json ./
+COPY --from=builder /app/node_modules ./node_modules/
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist/
+COPY --from=builder /app/protos ./protos/
+COPY --from=builder /app/tsconfig.build.json ./
+COPY --from=builder /app/tsconfig.json ./
+COPY --from=builder /app/prisma ./prisma/
 
 # run npm install in our local machine
 RUN npm install
@@ -28,4 +34,4 @@ EXPOSE 3009
 
 # the command that starts our app
 #ENTRYPOINT [ "node", "index.js", ]
-ENTRYPOINT [ "node", "src/main.js"]
+CMD ["npm", "run", "start:prod"]
