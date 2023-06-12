@@ -6,13 +6,12 @@ RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-COPY . .
-FROM node:latest
 # copy the package.json files from local machine to the workdir in container
 COPY --chown=node:node package*.json ./
+
 # Copiar tsconfig.json
 COPY tsconfig.json ./
-COPY --from=builder /app/dist ./dist/
+
 
 # run npm install in our local machine
 RUN npm install
@@ -22,6 +21,8 @@ RUN npm run build
 
 # copy the generated modules and all other files to the container
 COPY --chown=node:node . .
+
+COPY /dist ./dist/
 
 USER node
 
