@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTipoDesechoDto } from './dto/create-tipo-desecho.dto';
-import { UpdateTipoDesechoDto } from './dto/update-tipo-desecho.dto';
 import { Model } from 'mongoose';
 import { TipoDesecho } from './schema/tipo-desecho.schema';
 import { InjectModel } from '@nestjs/mongoose';
