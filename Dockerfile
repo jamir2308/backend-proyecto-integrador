@@ -28,4 +28,4 @@ EXPOSE 3009
 
 # the command that starts our app
 #ENTRYPOINT [ "node", "index.js", ]
-CMD [ "node", "dist/main.js" ]
+ENTRYPOINT [ "node", "src/main.js"]
