@@ -18,6 +18,8 @@ RUN npm install
 # Compilar la aplicación
 RUN npm run build
 
+COPY dist ./
+
 # copy the generated modules and all other files to the container
 COPY --chown=node:node . .
 
@@ -28,4 +30,4 @@ EXPOSE 3009
 
 # the command that starts our app
 #ENTRYPOINT [ "node", "index.js", ]
-CMD ["npm", "run", "start:prod"]
+CMD [ "node", "dist/main.js" ]
