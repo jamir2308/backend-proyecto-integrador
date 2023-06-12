@@ -18,8 +18,6 @@ RUN npm install
 # Compilar la aplicación
 RUN npm run build
 
-COPY dist ./
-
 # copy the generated modules and all other files to the container
 COPY --chown=node:node . .
 
